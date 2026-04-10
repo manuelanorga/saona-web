@@ -134,7 +134,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-28 pb-24">
         <div className="max-w-2xl">
           {slide.subtitle && (
             <span className="inline-block text-saona-green font-bold text-xs tracking-widest uppercase mb-5 border border-saona-green/50 rounded-full px-4 py-1.5">
