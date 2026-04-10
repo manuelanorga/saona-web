@@ -40,12 +40,7 @@ export default function Navbar() {
         scrolled ? 'bg-saona-navy shadow-lg shadow-black/20' : 'bg-saona-navy'
       )}
     >
-      {/* Blue wave shape */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden h-2 pointer-events-none">
-        <svg viewBox="0 0 1440 8" className="w-full" preserveAspectRatio="none">
-          <path d="M0,0 C360,8 1080,8 1440,0 L1440,8 L0,8 Z" fill="#1565C0" />
-        </svg>
-      </div>
+
 
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
