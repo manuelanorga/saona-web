@@ -3,25 +3,30 @@ import Link from 'next/link';
 import { Package, Palette, MessageSquare, Image, ArrowRight } from 'lucide-react';
 
 export default async function AdminDashboard() {
-  let products = { count: 0 };
-  let messages = { count: 0 };
-  let colors = { count: 0 };
-  let envs = { count: 0 };
+  let productsCount = 0;
+  let messagesCount = 0;
+  let colorsCount = 0;
+  let envsCount = 0;
+
   try {
     const admin = createAdminClient();
-    [products, messages, colors, envs] = await Promise.all([
+    const [products, messages, colors, envs] = await Promise.all([
       admin.from('products').select('id', { count: 'exact', head: true }),
       admin.from('contact_messages').select('id', { count: 'exact', head: true }).eq('is_read', false),
       admin.from('colors').select('id', { count: 'exact', head: true }),
       admin.from('environments').select('id', { count: 'exact', head: true }),
     ]);
+    productsCount = products.count ?? 0;
+    messagesCount = messages.count ?? 0;
+    colorsCount = colors.count ?? 0;
+    envsCount = envs.count ?? 0;
   } catch (e) {}
 
   const stats = [
-    { label: 'Productos', value: products.count || 0, icon: Package, href: '/admin/productos', color: 'bg-blue-500' },
-    { label: 'Mensajes sin leer', value: messages.count || 0, icon: MessageSquare, href: '/admin/mensajes', color: 'bg-amber-500' },
-    { label: 'Colores en paleta', value: colors.count || 0, icon: Palette, href: '/admin/colores', color: 'bg-purple-500' },
-    { label: 'Ambientes simulador', value: envs.count || 0, icon: Image, href: '/admin/ambientes', color: 'bg-teal-500' },
+    { label: 'Productos', value: productsCount, icon: Package, href: '/admin/productos', color: 'bg-blue-500' },
+    { label: 'Mensajes sin leer', value: messagesCount, icon: MessageSquare, href: '/admin/mensajes', color: 'bg-amber-500' },
+    { label: 'Colores en paleta', value: colorsCount, icon: Palette, href: '/admin/colores', color: 'bg-purple-500' },
+    { label: 'Ambientes simulador', value: envsCount, icon: Image, href: '/admin/ambientes', color: 'bg-teal-500' },
   ];
 
   const quickActions = [
@@ -37,8 +42,6 @@ export default async function AdminDashboard() {
         <h1 className="text-2xl font-black text-gray-900">Dashboard</h1>
         <p className="text-gray-500 text-sm mt-1">Bienvenido al panel de administración de SAONA</p>
       </div>
-
-      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map(({ label, value, icon: Icon, href, color }) => (
           <Link key={label} href={href} className="bg-white rounded-2xl p-5 hover:shadow-md transition-shadow">
@@ -50,17 +53,11 @@ export default async function AdminDashboard() {
           </Link>
         ))}
       </div>
-
-      {/* Quick actions */}
       <div>
         <h2 className="font-bold text-gray-800 mb-4">Acciones rápidas</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {quickActions.map(({ href, label, desc, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="bg-white rounded-2xl p-5 flex items-center gap-4 hover:shadow-md transition-all group border-2 border-transparent hover:border-saona-blue/20"
-            >
+            <Link key={href} href={href} className="bg-white rounded-2xl p-5 flex items-center gap-4 hover:shadow-md transition-all group border-2 border-transparent hover:border-saona-blue/20">
               <div className="w-12 h-12 bg-gray-100 group-hover:bg-saona-blue/10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
                 <Icon className="w-6 h-6 text-gray-500 group-hover:text-saona-blue transition-colors" />
               </div>
