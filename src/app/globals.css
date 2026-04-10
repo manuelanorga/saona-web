@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue: #1565C0;
+  --blue-light: #1E88E5;
+  --blue-electric: #2979FF;
+  --green: #00C853;
+  --navy: #050E1F;
+  --navy-light: #0A1628;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #1a1a2e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Wave SVG background */
+.wave-bg {
+  background: linear-gradient(135deg, #050E1F 0%, #0D47A1 50%, #050E1F 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #1565C0;
+  border-radius: 3px;
+}
+
+/* Product card hover */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(21, 101, 192, 0.15);
+}
+
+/* Paint simulator */
+.color-swatch {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.color-swatch:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.color-swatch.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px white, 0 0 0 5px #1565C0;
+}
+
+/* Admin sidebar */
+.admin-nav-item {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.admin-nav-item:hover, .admin-nav-item.active {
+  background: rgba(25, 118, 210, 0.1);
+  color: #1976D2;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
