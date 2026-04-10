@@ -12,8 +12,8 @@ import { clsx } from 'clsx';
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
+  { href: '/admin/banners', label: 'Banners Hero', icon: ImageIcon },
   { href: '/admin/productos', label: 'Productos', icon: Package },
-  { href: '/admin/categorias', label: 'Categorías', icon: Package },
   { href: '/admin/colores', label: 'Paleta de Colores', icon: Palette },
   { href: '/admin/ambientes', label: 'Ambientes Simulador', icon: ImageIcon },
   { href: '/admin/mensajes', label: 'Mensajes', icon: MessageSquare },

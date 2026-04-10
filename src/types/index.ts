@@ -64,6 +64,8 @@ export interface HeroSlide {
   subtitle?: string;
   description?: string;
   image_url?: string;
+  color_start?: string;
+  color_end?: string;
   cta_primary_text: string;
   cta_primary_link: string;
   cta_secondary_text: string;
